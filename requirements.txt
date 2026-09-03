@@ -1,4 +1,4 @@
-python-dotenv==1.1.0
+python-dotenv==1.2.2
 # Optional dev dependencies (not needed in production — opsora_server.py is stdlib-only):
 # fastapi==0.115.12
 # uvicorn[standard]==0.34.2
