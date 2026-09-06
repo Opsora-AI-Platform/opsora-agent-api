@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "currency": "IDR",
+  "source_of_truth": "supabase.public.product_catalog",
+  "products": [
+    {"slug":"opsora-free","category":"subscription","price_idr":0,"billing_interval":"month","shopify_product_id":"gid://shopify/Product/9918748590315","shopify_variant_id":"gid://shopify/ProductVariant/49320227832043","entitlement_key":"plan:free","status":"active"},
+    {"slug":"opsora-basic","category":"subscription","price_idr":49000,"billing_interval":"month","shopify_product_id":"gid://shopify/Product/9918742757611","shopify_variant_id":"gid://shopify/ProductVariant/49320206270699","entitlement_key":"plan:basic","status":"active"},
+    {"slug":"opsora-pro","category":"subscription","price_idr":149000,"billing_interval":"month","shopify_product_id":"gid://shopify/Product/9918743281899","shopify_variant_id":"gid://shopify/ProductVariant/49320208924907","entitlement_key":"plan:pro","status":"active"},
+    {"slug":"opsora-max","category":"subscription","price_idr":299000,"billing_interval":"month","shopify_product_id":"gid://shopify/Product/9918746427627","shopify_variant_id":"gid://shopify/ProductVariant/49320216199403","entitlement_key":"plan:max","status":"active"},
+    {"slug":"opsora-founder-os","category":"template","price_idr":null,"billing_interval":"one_time","shopify_product_id":"gid://shopify/Product/9939242746091","shopify_variant_id":"gid://shopify/ProductVariant/49357753254123","entitlement_key":"product:founder-os","status":"draft"},
+    {"slug":"opsora-developer-os","category":"template","price_idr":null,"billing_interval":"one_time","shopify_product_id":"gid://shopify/Product/9939242778859","shopify_variant_id":"gid://shopify/ProductVariant/49357753286891","entitlement_key":"product:developer-os","status":"draft"},
+    {"slug":"opsora-startup-os","category":"template","price_idr":null,"billing_interval":"one_time","shopify_product_id":"gid://shopify/Product/9939242811627","shopify_variant_id":"gid://shopify/ProductVariant/49357753319659","entitlement_key":"product:startup-os","status":"draft"},
+    {"slug":"opsora-agency-os","category":"template","price_idr":null,"billing_interval":"one_time","shopify_product_id":"gid://shopify/Product/9939242844395","shopify_variant_id":"gid://shopify/ProductVariant/49357753352427","entitlement_key":"product:agency-os","status":"draft"},
+    {"slug":"opsora-ecommerce-os","category":"template","price_idr":null,"billing_interval":"one_time","shopify_product_id":"gid://shopify/Product/9939242877163","shopify_variant_id":"gid://shopify/ProductVariant/49357753385195","entitlement_key":"product:ecommerce-os","status":"draft"}
+  ]
+}
