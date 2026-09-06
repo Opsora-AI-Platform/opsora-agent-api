@@ -1,6 +1,6 @@
 # ==============================================================================
 # Opsora Agent API — Production Dockerfile
-# Single-stage: stdlib-only server, no pip dependencies needed at runtime.
+# Edge proxy terminates Shopify webhooks and forwards all other traffic.
 # ==============================================================================
 
 FROM python:3.12-slim
@@ -23,23 +23,23 @@ COPY main.py ./
 COPY tools.py ./
 COPY agent_loop.py ./
 COPY mongo_store.py ./
+COPY shopify_webhook.py ./
+COPY entrypoint.py ./
 
-# Copy static assets (landing page + docs served by nginx, but available in container)
+# Copy static assets
 COPY index.html docs.html ./
 COPY assets/ ./assets/
 
-# Python optimisations
 ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1
+    PYTHONUNBUFFERED=1 \
+    OPSORA_UPSTREAM_PORT=8081
 
-# The app listens on this port; nginx or compose maps it externally.
 EXPOSE 8080
 
-# Health check — pure stdlib, no httpx needed
+# Health check — pure stdlib
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
     CMD python -c "from urllib.request import urlopen; r = urlopen('http://localhost:8080/health'); assert r.status == 200" || exit 1
 
-# Drop privileges before starting the server
 USER opsora
 
-CMD ["python", "opsora_server.py"]
+CMD ["python", "entrypoint.py"]
