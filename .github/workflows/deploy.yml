@@ -35,6 +35,7 @@ jobs:
     name: Post-deploy health check
     needs: deploy
     runs-on: ubuntu-latest
+    if: ${{ needs.deploy.result == 'success' }}
 
     steps:
       - name: Run external health check
@@ -42,13 +43,13 @@ jobs:
           APP_URL="https://opsora-agent-api.fly.dev/health"
           echo "Checking $APP_URL ..."
           for i in $(seq 1 8); do
-            HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "$APP_URL" || echo "000")
+            HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "$APP_URL" || true)
             if [ "$HTTP_CODE" = "200" ]; then
-              echo "✅ Health check passed (HTTP $HTTP_CODE)"
+              echo "Health check passed (HTTP $HTTP_CODE)"
               exit 0
             fi
-            echo "  attempt $i/8 — HTTP $HTTP_CODE"
+            echo "attempt $i/8 — HTTP $HTTP_CODE"
             sleep 5
           done
-          echo "❌ Health check failed after 40s"
+          echo "Health check failed after 40s"
           exit 1
